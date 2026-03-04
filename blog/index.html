@@ -1,0 +1,24 @@
+---
+layout: default
+title: Blog
+description: Security research, notes, and articles.
+---
+
+<div class="section-header" style="margin-bottom: 40px;">
+  <h1 class="section-title" style="font-size: 1rem;">blog</h1>
+  <span class="section-count">{{ site.posts | size }} posts</span>
+</div>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li class="post-list-item">
+    <span class="post-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+    <a href="{{ post.url | relative_url }}" class="post-list-title">{{ post.title }}</a>
+    <div class="post-list-tags">
+      {% for tag in post.tags limit: 2 %}
+      <span class="tag tag-default">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

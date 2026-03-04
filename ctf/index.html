@@ -1,0 +1,48 @@
+---
+layout: default
+title: CTF Writeups
+description: CTF challenge writeups covering web, pwn, reversing, crypto, and more.
+---
+
+<div class="section-header" style="margin-bottom: 40px;">
+  <h1 class="section-title" style="font-size: 1rem;">ctf writeups</h1>
+  <span class="section-count">{{ site.writeups | size }} writeups</span>
+</div>
+
+<!-- Filter bar -->
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;">
+  <span class="tag tag-cyan" style="cursor:pointer;">all</span>
+  <span class="tag tag-default" style="cursor:pointer;">web</span>
+  <span class="tag tag-default" style="cursor:pointer;">pwn</span>
+  <span class="tag tag-default" style="cursor:pointer;">rev</span>
+  <span class="tag tag-default" style="cursor:pointer;">crypto</span>
+  <span class="tag tag-default" style="cursor:pointer;">osint</span>
+  <span class="tag tag-default" style="cursor:pointer;">misc</span>
+</div>
+
+<div class="cards-grid">
+  {% assign sorted_writeups = site.writeups | sort: 'date' | reverse %}
+  {% for writeup in sorted_writeups %}
+  <a href="{{ writeup.url | relative_url }}" style="text-decoration:none;">
+    <div class="card">
+      <div class="card-meta">
+        {% if writeup.difficulty %}
+        <span class="tag diff-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+        {% endif %}
+        {% if writeup.category %}
+        <span class="tag tag-default">{{ writeup.category }}</span>
+        {% endif %}
+      </div>
+      <div class="card-title">{{ writeup.title }}</div>
+      <div class="card-desc">{{ writeup.description | default: writeup.excerpt | strip_html | truncate: 110 }}</div>
+      <div class="card-footer">
+        <span>{{ writeup.event | default: "CTF" }}</span>
+        <span>
+          {% if writeup.points %}{{ writeup.points }}pts · {% endif %}
+          {{ writeup.date | date: "%b %Y" }}
+        </span>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>

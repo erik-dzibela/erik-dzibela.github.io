@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<article>
+  <header class="post-header">
+    <div class="post-meta">
+      <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+      {% if page.event %}
+      <span class="post-meta-divider">|</span>
+      <span>{{ page.event }}</span>
+      {% endif %}
+      <span class="post-meta-divider">|</span>
+      <span class="tag tag-cyan">ctf writeup</span>
+      {% if page.difficulty %}
+      <span class="tag diff-{{ page.difficulty | downcase }}">{{ page.difficulty }}</span>
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <!-- Metadata box -->
+  <div class="writeup-meta-box">
+    {% if page.event %}
+    <div class="meta-item">
+      <div class="meta-label">Event</div>
+      <div class="meta-value">{{ page.event }}</div>
+    </div>
+    {% endif %}
+    {% if page.category %}
+    <div class="meta-item">
+      <div class="meta-label">Category</div>
+      <div class="meta-value">{{ page.category }}</div>
+    </div>
+    {% endif %}
+    {% if page.difficulty %}
+    <div class="meta-item">
+      <div class="meta-label">Difficulty</div>
+      <div class="meta-value">{{ page.difficulty }}</div>
+    </div>
+    {% endif %}
+    {% if page.points %}
+    <div class="meta-item">
+      <div class="meta-label">Points</div>
+      <div class="meta-value">{{ page.points }}</div>
+    </div>
+    {% endif %}
+    {% if page.solves %}
+    <div class="meta-item">
+      <div class="meta-label">Solves</div>
+      <div class="meta-value">{{ page.solves }}</div>
+    </div>
+    {% endif %}
+    {% if page.flag %}
+    <div class="meta-item">
+      <div class="meta-label">Flag</div>
+      <div class="meta-value" style="color: var(--green); font-size: 0.8rem; word-break: break-all;">{{ page.flag }}</div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

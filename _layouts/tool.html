@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<article>
+  <header class="post-header">
+    <div class="post-meta">
+      {% if page.language %}
+      <span class="tag tag-cyan">{{ page.language }}</span>
+      {% endif %}
+      {% if page.tags %}
+      {% for tag in page.tags %}
+      <span class="tag tag-default">{{ tag }}</span>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.github %}
+    <div style="margin-top: 16px;">
+      <a href="{{ page.github }}" class="btn btn-outline" target="_blank" rel="noopener">
+        ↗ view on github
+      </a>
+      {% if page.download %}
+      <a href="{{ page.download }}" class="btn btn-primary" style="margin-left: 8px;">
+        ↓ download
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

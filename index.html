@@ -1,0 +1,135 @@
+---
+layout: default
+title: Home
+---
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">security researcher</div>
+  <h1 class="hero-title">
+    hi, i'm <span class="accent">your_handle</span>.<br>
+    i break things<br>and write about it.
+  </h1>
+  <p class="hero-desc">
+    CTF player · tool builder · security researcher.
+    I document my findings, build open-source tools,
+    and share writeups from competitions and research.
+  </p>
+  <div class="hero-actions">
+    <a href="/ctf/" class="btn btn-primary">⚑ ctf writeups</a>
+    <a href="/tools/" class="btn btn-outline">⚙ my tools</a>
+  </div>
+</section>
+
+<!-- Terminal aesthetic block -->
+<div class="terminal">
+  <div class="terminal-bar">
+    <div class="terminal-dot"></div>
+    <div class="terminal-dot"></div>
+    <div class="terminal-dot"></div>
+    <span class="terminal-title">bash &mdash; your_handle@kali</span>
+  </div>
+  <div class="terminal-body">
+    <div><span class="terminal-prompt">~/$ </span><span class="terminal-cmd">whoami</span></div>
+    <div class="terminal-out">security researcher, ctf player, tool builder</div>
+    <br>
+    <div><span class="terminal-prompt">~/$ </span><span class="terminal-cmd">cat interests.txt</span></div>
+    <div class="terminal-out">web exploitation, binary exploitation, reverse engineering, osint</div>
+    <br>
+    <div><span class="terminal-prompt">~/$ </span><span class="terminal-cmd">ls -la ./achievements</span></div>
+    <div class="terminal-out">top 10% HTB · PicoCTF finalist · DEF CON CTF qualifier</div>
+    <br>
+    <div><span class="terminal-prompt">~/$ <span class="cursor-blink">_</span></span></div>
+  </div>
+</div>
+
+<style>
+.cursor-blink { animation: blink 1s step-end infinite; }
+</style>
+
+<!-- Recent Writeups -->
+<section style="margin-top: 64px;">
+  <div class="section-header">
+    <h2 class="section-title">recent writeups</h2>
+    <span class="section-count">{{ site.writeups | size }} total</span>
+    <a href="/ctf/" class="section-link">view all →</a>
+  </div>
+
+  <div class="cards-grid">
+    {% assign recent_writeups = site.writeups | sort: 'date' | reverse | limit: 3 %}
+    {% for writeup in recent_writeups %}
+    <a href="{{ writeup.url | relative_url }}" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-meta">
+          {% if writeup.difficulty %}
+          <span class="tag diff-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+          {% endif %}
+          {% if writeup.category %}
+          <span class="tag tag-default">{{ writeup.category }}</span>
+          {% endif %}
+        </div>
+        <div class="card-title">{{ writeup.title }}</div>
+        <div class="card-desc">{{ writeup.description | default: writeup.excerpt | strip_html | truncate: 100 }}</div>
+        <div class="card-footer">
+          <span>{{ writeup.event | default: "CTF" }}</span>
+          <span>{{ writeup.date | date: "%b %Y" }}</span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Recent Tools -->
+<section style="margin-top: 64px;">
+  <div class="section-header">
+    <h2 class="section-title">tools</h2>
+    <span class="section-count">{{ site.tools | size }} total</span>
+    <a href="/tools/" class="section-link">view all →</a>
+  </div>
+
+  <div class="cards-grid">
+    {% assign featured_tools = site.tools | sort: 'date' | reverse | limit: 3 %}
+    {% for tool in featured_tools %}
+    <a href="{{ tool.url | relative_url }}" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-meta">
+          {% if tool.language %}
+          <span class="tag tag-cyan">{{ tool.language }}</span>
+          {% endif %}
+        </div>
+        <div class="card-title">{{ tool.title }}</div>
+        <div class="card-desc">{{ tool.description | truncate: 100 }}</div>
+        <div class="card-footer">
+          <span class="tool-lang">{{ tool.language | default: "tool" }}</span>
+          {% if tool.github %}
+          <span style="color: var(--cyan);">github ↗</span>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Recent Blog -->
+<section style="margin-top: 64px; margin-bottom: 32px;">
+  <div class="section-header">
+    <h2 class="section-title">latest posts</h2>
+    <a href="/blog/" class="section-link">view all →</a>
+  </div>
+
+  <ul class="post-list">
+    {% for post in site.posts limit: 5 %}
+    <li class="post-list-item">
+      <span class="post-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ post.url | relative_url }}" class="post-list-title">{{ post.title }}</a>
+      <div class="post-list-tags">
+        {% for tag in post.tags limit: 2 %}
+        <span class="tag tag-default">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

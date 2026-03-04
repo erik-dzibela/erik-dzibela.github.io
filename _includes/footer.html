@@ -1,0 +1,17 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span>{{ site.title }}</span> &mdash; security researcher &amp; ctf player<br>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">built with jekyll · hosted on github pages</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">github</a>
+        {% if site.author.twitter %}
+        <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" rel="noopener">twitter</a>
+        {% endif %}
+        <a href="{{ '/blog/feed.xml' | relative_url }}">rss</a>
+      </div>
+    </div>
+  </div>
+</footer>
