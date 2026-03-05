@@ -2,7 +2,7 @@
 title: "portknock"
 date: 2026-01-02
 language: "Python"
-description: "Async port knocking tool with post-knock scanning and banner grabbing. No external dependencies — stdlib only."
+description: "Async port knocking tool with post-knock scanning and banner grabbing."
 github: "https://github.com/r00t26/portknock"
 tags: [recon, networking, async]
 ---
