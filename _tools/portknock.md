@@ -1,43 +1,41 @@
 ---
 title: "portknock"
-date: 2024-02-10
+date: 2026-01-02
 language: "Python"
-description: "A fast, async port knocker and service fingerprinter. Supports custom knock sequences, TCP/UDP, and JSON output for pipeline integration."
-github: "https://github.com/yourhandle/portknock"
+description: "Async port knocking tool with post-knock scanning and banner grabbing. No external dependencies — stdlib only."
+github: "https://github.com/r00t26/portknock"
 tags: [recon, networking, async]
 ---
 
-## About
+Async port knocking tool built for HTB and CTF workflows. Send TCP or UDP knock sequences, then automatically scan to verify a port opened and grab service banners — all in one command.
 
-`portknock` is a lightweight async port knocker written in Python 3.10+. It's built for speed — using `asyncio` it can knock thousands of ports per second on LAN.
-
-## Features
-
-- Async TCP/UDP scanning
-- Custom knock sequences from file or CLI
-- JSON output for pipeline use
-- Banner grabbing + service fingerprinting
+No external dependencies. Python 3.10+ only.
 
 ## Usage
 
 ```bash
-pip install portknock
+# Basic TCP knock sequence
+python3 portknock.py 10.10.10.1 7000 8000 9000
 
-# Basic knock sequence
-portknock 192.168.1.1 7000 8000 9000
+# UDP knock sequence
+python3 portknock.py 10.10.10.1 7000 8000 9000 --udp
 
-# From file, with JSON output
-portknock --sequence seq.txt --json 192.168.1.1
+# Knock then scan specific ports
+python3 portknock.py 10.10.10.1 7000 8000 9000 --scan 22,80,443
 
-# Banner grab after knock
-portknock --grab 192.168.1.1 22 80 443
+# Knock, scan a range, grab banners
+python3 portknock.py 10.10.10.1 7000 8000 9000 --scan 1-1024 --grab
+
+# Custom delay between knocks (ms)
+python3 portknock.py 10.10.10.1 7000 8000 9000 --delay 500
 ```
 
-## Installation
+## Options
 
-```bash
-git clone https://github.com/yourhandle/portknock
-cd portknock
-pip install -r requirements.txt
-python portknock.py --help
-```
+| Flag | Description |
+|------|-------------|
+| `--udp` | Use UDP knock packets instead of TCP |
+| `--scan PORTS` | Scan ports after knocking — accepts `22,80,443` or ranges like `1-1024` |
+| `--grab` | Grab service banners from open ports found during scan |
+| `--delay MS` | Delay between knocks in milliseconds (default: 100) |
+| `--scan-timeout SEC` | Per-port timeout during scan (default: 2.0) |
