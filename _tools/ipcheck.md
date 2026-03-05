@@ -1,6 +1,6 @@
 ---
 title: "ipcheck"
-date: 2026-03-05
+date: 2026-02-05
 language: "Python"
 description: "A simple CLI based utility that can check the reputation of IPs using the AbuseIPDB API."
 github: "https://github.com/erik-dzibela/IPCheck/tree/main"
