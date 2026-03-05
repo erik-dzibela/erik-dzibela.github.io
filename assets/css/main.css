@@ -204,7 +204,7 @@ main { flex: 1; padding: 60px 0; }
 .hero {
   padding: 80px 0 60px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero::before {
@@ -348,7 +348,7 @@ main { flex: 1; padding: 60px 0; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .card {
@@ -359,6 +359,9 @@ main { flex: 1; padding: 60px 0; }
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card::before {
@@ -413,6 +416,7 @@ main { flex: 1; padding: 60px 0; }
   border-top: 1px solid var(--border);
   font-size: 0.78rem;
   color: var(--text-dim);
+  margin-top: auto;
 }
 
 .card-link {
