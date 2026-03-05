@@ -3,7 +3,7 @@ title: "ipcheck"
 date: 2026-03-05
 language: "Python"
 description: "A simple CLI based utility that can check the reputation of IPs using the AbuseIPDB API."
-github: "https://github.com/erik-dzibela/IPCheck/blob/main/ipcheck.py"
+github: "https://github.com/erik-dzibela/IPCheck/tree/main"
 tags: [recon, networking, soc]
 ---
 
@@ -25,9 +25,7 @@ tags: [recon, networking, soc]
 - Note: Before using, you need a valid AbuseIPDB API.
 
 ```bash
-# Lookup
 python3 ipcheck.py
-
 ```
 
 ## Installation

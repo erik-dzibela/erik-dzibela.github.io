@@ -1,6 +1,6 @@
-# your_handle.github.io
+# erik-dzibela.github.io
 
-Personal cybersecurity site — CTF writeups, tools, blog.
+Personal cybersecurity site — writeups, tools, blog.
 
 Built with [Jekyll](https://jekyllrb.com/) · Hosted on [GitHub Pages](https://pages.github.com/)
 
@@ -15,8 +15,8 @@ Built with [Jekyll](https://jekyllrb.com/) · Hosted on [GitHub Pages](https://p
 ### Local Development
 
 ```bash
-git clone https://github.com/yourusername/yourusername.github.io
-cd yourusername.github.io
+git clone https://github.com/erik-dzibela/erik-dzibela.github.io
+cd erik-dzibela.github.io
 bundle install
 bundle exec jekyll serve --livereload
 # → http://localhost:4000
