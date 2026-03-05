@@ -4,16 +4,27 @@ title: Writeups
 description: writeups for CTF challenges, exploits, and CVEs
 ---
 
-<div class="section-header" style="margin-bottom: 40px;">
+<div class="section-header" style="margin-bottom: 24px;">
   <h1 class="section-title" style="font-size: 1rem;">writeups</h1>
   <span class="section-count">{{ site.writeups | size }} writeups</span>
+</div>
+
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;">
+  <span class="tag tag-cyan" style="cursor:pointer;" data-filter="all">all</span>
+  <span class="tag tag-default" style="cursor:pointer;" data-filter="cve">cve</span>
+  <span class="tag tag-default" style="cursor:pointer;" data-filter="ctf">ctf</span>
+  <span class="tag tag-default" style="cursor:pointer;" data-filter="other">other</span>
 </div>
 
 <section>
   <div class="cards-grid">
     {% assign sorted_writeups = site.writeups | sort: 'date' | reverse %}
     {% for writeup in sorted_writeups %}
-    <a href="{{ writeup.url | relative_url }}" style="text-decoration:none;">
+    {% assign event_lower = writeup.event | downcase %}
+    {% if event_lower contains 'cve' %}{% assign filter_cat = 'cve' %}
+    {% elsif event_lower contains 'ctf' %}{% assign filter_cat = 'ctf' %}{% assign filter_cat = 'ctf' %}
+    {% else %}{% assign filter_cat = 'other' %}{% endif %}
+    <a href="{{ writeup.url | relative_url }}" style="text-decoration:none;" class="writeup-card" data-category="{{ filter_cat }}">
       <div class="card">
         <div class="card-meta">
           {% if writeup.difficulty %}
@@ -37,3 +48,19 @@ description: writeups for CTF challenges, exploits, and CVEs
     {% endfor %}
   </div>
 </section>
+
+<script>
+const tags = document.querySelectorAll('[data-filter]');
+const cards = document.querySelectorAll('.writeup-card');
+
+tags.forEach(tag => {
+  tag.addEventListener('click', () => {
+    tags.forEach(t => { t.className = 'tag tag-default'; });
+    tag.className = 'tag tag-cyan';
+    const filter = tag.dataset.filter;
+    cards.forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+</script>

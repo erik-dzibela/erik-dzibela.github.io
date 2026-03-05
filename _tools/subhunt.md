@@ -3,7 +3,7 @@ title: "subhunt"
 date: 2026-01-12
 language: "Python"
 description: "Async subdomain bruteforcer with wildcard DNS detection to cut down on false positives. Fast, clean output, and SecLists compatible."
-github: "https://github.com/r00t26/subhunt"
+github: "https://github.com/erik-dzibela/subhunt"
 tags: [recon, dns, async]
 ---
 
@@ -14,7 +14,7 @@ No external dependencies beyond `dnspython`.
 ## Installation
 
 ```bash
-git clone https://github.com/r00t26/subhunt
+git clone https://github.com/erik-dzibela/subhunt
 pip3 install dnspython
 ```
 
