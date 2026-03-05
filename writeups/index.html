@@ -23,26 +23,24 @@ description: CTF challenge writeups covering web, pwn, reversing, crypto, and mo
 <div class="cards-grid">
   {% assign sorted_writeups = site.writeups | sort: 'date' | reverse %}
   {% for writeup in sorted_writeups %}
-  <a href="{{ writeup.url | relative_url }}" style="text-decoration:none;">
-    <div class="card">
-      <div class="card-meta">
-        {% if writeup.difficulty %}
-        <span class="tag diff-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
-        {% endif %}
-        {% if writeup.category %}
-        <span class="tag tag-default">{{ writeup.category }}</span>
-        {% endif %}
-      </div>
-      <div class="card-title">{{ writeup.title }}</div>
-      <div class="card-desc">{{ writeup.description | default: writeup.excerpt | strip_html | truncate: 110 }}</div>
-      <div class="card-footer">
-        <span>{{ writeup.event | default: "CTF" }}</span>
-        <span>
-          {% if writeup.points %}{{ writeup.points }}pts · {% endif %}
-          {{ writeup.date | date: "%b %Y" }}
-        </span>
-      </div>
+  <div class="card" onclick="window.location='{{ writeup.url | relative_url }}'" style="cursor:pointer;">
+    <div class="card-meta">
+      {% if writeup.difficulty %}
+      <span class="tag diff-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+      {% endif %}
+      {% if writeup.category %}
+      <span class="tag tag-default">{{ writeup.category }}</span>
+      {% endif %}
     </div>
-  </a>
+    <div class="card-title">{{ writeup.title }}</div>
+    <div class="card-desc">{{ writeup.description | default: writeup.excerpt | strip_html | truncate: 110 }}</div>
+    <div class="card-footer">
+      <span>{{ writeup.event | default: "HTB" }}</span>
+      <span>
+        {% if writeup.points %}{{ writeup.points }}pts · {% endif %}
+        {{ writeup.date | date: "%b %Y" }}
+      </span>
+    </div>
+  </div>
   {% endfor %}
 </div>

@@ -12,25 +12,23 @@ description: Open-source security tools and scripts I've built.
 <div class="cards-grid">
   {% assign sorted_tools = site.tools | sort: 'date' | reverse %}
   {% for tool in sorted_tools %}
-  <a href="{{ tool.url | relative_url }}" style="text-decoration:none;">
-    <div class="card">
-      <div class="card-meta">
-        {% if tool.language %}
-        <span class="tag tag-cyan">{{ tool.language }}</span>
-        {% endif %}
-        {% for tag in tool.tags limit: 2 %}
-        <span class="tag tag-default">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      <div class="card-title">{{ tool.title }}</div>
-      <div class="card-desc">{{ tool.description | truncate: 120 }}</div>
-      <div class="card-footer">
-        <span class="tool-lang">{{ tool.language | default: "tool" }}</span>
-        {% if tool.github %}
-        <a href="{{ tool.github }}" onclick="event.stopPropagation()" target="_blank" rel="noopener" style="color: var(--cyan);">github ↗</a>
-        {% endif %}
-      </div>
+  <div class="card" onclick="window.location='{{ tool.url | relative_url }}'" style="cursor:pointer;">
+    <div class="card-meta">
+      {% if tool.language %}
+      <span class="tag tag-cyan">{{ tool.language }}</span>
+      {% endif %}
+      {% for tag in tool.tags limit: 2 %}
+      <span class="tag tag-default">{{ tag }}</span>
+      {% endfor %}
     </div>
-  </a>
+    <div class="card-title">{{ tool.title }}</div>
+    <div class="card-desc">{{ tool.description | truncate: 120 }}</div>
+    <div class="card-footer">
+      <span class="tool-lang">{{ tool.language | default: "tool" }}</span>
+      {% if tool.github %}
+      <a href="{{ tool.github }}" onclick="event.stopPropagation()" target="_blank" rel="noopener" style="color: var(--cyan);">github ↗</a>
+      {% endif %}
+    </div>
+  </div>
   {% endfor %}
 </div>
