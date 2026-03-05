@@ -1,19 +1,17 @@
-title: "your_handle"
-description: "Security researcher. CTF player. Tool builder."
-url: "https://yourusername.github.io"
+title: "r00t26"
+description: "Security researcher."
+url: "https://erik-dzibela.github.io"
 baseurl: ""
 
 author:
-  name: "your_handle"
-  email: "you@example.com"
-  twitter: "yourhandle"
-  github: "yourhandle"
+  name: "r00t26"
+  github: "r00t26"
 
 # Collections
 collections:
   writeups:
     output: true
-    permalink: /ctf/:name/
+    permalink: /writeups/:name/
   tools:
     output: true
     permalink: /tools/:name/
