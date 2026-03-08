@@ -15,6 +15,9 @@ collections:
   tools:
     output: true
     permalink: /tools/:name/
+  cheatsheets:
+    output: true
+    permalink: /cheatsheets/:name/
 
 # Defaults
 defaults:
@@ -33,6 +36,11 @@ defaults:
       type: "tools"
     values:
       layout: "tool"
+  - scope:
+      path: ""
+      type: "cheatsheets"
+    values:
+      layout: "post"
 
 # Build
 markdown: kramdown

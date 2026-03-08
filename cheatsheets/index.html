@@ -1,0 +1,33 @@
+---
+layout: default
+title: Cheatsheets
+description: Pentesting references and cheatsheets.
+---
+
+<div class="section-header" style="margin-bottom: 40px;">
+  <h1 class="section-title" style="font-size: 1rem;">cheatsheets</h1>
+  <span class="section-count">{{ site.cheatsheets | size }} cheatsheets</span>
+</div>
+
+<section>
+  <div class="cards-grid">
+    {% assign sorted_cheatsheets = site.cheatsheets | sort: 'date' | reverse %}
+    {% for cheatsheet in sorted_cheatsheets %}
+    <div class="card" style="cursor:pointer;" onclick="window.location='{{ cheatsheet.url | relative_url }}'">
+      <div class="card-meta">
+        {% if cheatsheet.language %}
+        <span class="tag tag-cyan">{{ cheatsheet.language }}</span>
+        {% endif %}
+        {% for tag in cheatsheet.tags limit: 2 %}
+        <span class="tag tag-default">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="card-title">{{ cheatsheet.title }}</div>
+      <div class="card-desc">{{ cheatsheet.description | truncate: 120 }}</div>
+      <div class="card-footer">
+        <span>{{ cheatsheet.date | date: "%b %Y" }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

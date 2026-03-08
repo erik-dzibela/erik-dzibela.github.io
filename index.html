@@ -112,20 +112,22 @@ title: Home
   </div>
 </section>
 
-<!-- Recent Blog -->
+<!-- Cheatsheets -->
 <section style="margin-top: 64px; margin-bottom: 32px;">
   <div class="section-header">
-    <h2 class="section-title">latest posts</h2>
-    <a href="/blog/" class="section-link">view all →</a>
+    <h2 class="section-title">cheatsheets</h2>
+    <span class="section-count">{{ site.cheatsheets | size }} total</span>
+    <a href="/cheatsheets/" class="section-link">view all →</a>
   </div>
 
   <ul class="post-list">
-    {% for post in site.posts limit: 5 %}
+    {% assign recent_cheatsheets = site.cheatsheets | sort: 'date' | reverse %}
+    {% for cheatsheet in recent_cheatsheets limit: 5 %}
     <li class="post-list-item">
-      <span class="post-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      <a href="{{ post.url | relative_url }}" class="post-list-title">{{ post.title }}</a>
+      <span class="post-list-date">{{ cheatsheet.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ cheatsheet.url | relative_url }}" class="post-list-title">{{ cheatsheet.title }}</a>
       <div class="post-list-tags">
-        {% for tag in post.tags limit: 2 %}
+        {% for tag in cheatsheet.tags limit: 2 %}
         <span class="tag tag-default">{{ tag }}</span>
         {% endfor %}
       </div>
