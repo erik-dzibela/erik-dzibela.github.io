@@ -1,6 +1,6 @@
 # erik-dzibela.github.io
 
-Personal cybersecurity site — writeups, tools, blog.
+Personal cybersecurity site — writeups, tools, cheatsheets.
 
 Built with [Jekyll](https://jekyllrb.com/) · Hosted on [GitHub Pages](https://pages.github.com/)
 
