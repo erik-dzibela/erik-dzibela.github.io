@@ -7,7 +7,7 @@ github: "https://github.com/r00t26/portknock"
 tags: [recon, networking, async]
 ---
 
-Async port knocking tool built for HTB and CTF workflows. Send TCP or UDP knock sequences, then automatically scan to verify a port opened and grab service banners.o
+Async port knocking tool built for HTB and CTF workflows. Send TCP or UDP knock sequences, then automatically scan to verify a port opened and grab service banners.
 
 No external dependencies. Python 3.10+ only.
 
