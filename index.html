@@ -7,13 +7,12 @@ title: Home
 <section class="hero">
   <div class="hero-tag">security researcher</div>
   <h1 class="hero-title">
-    hi, i'm <span class="accent">r00t26</span>.<br>
-    i break things<br>and write about it.
+    <span class="accent">r00t26</span><br>
+    <span style="font-size: 0.6em; font-weight: 400;">Security Engineer. Researcher. Builder.</span>
   </h1>
   <p class="hero-desc">
-    Security engineer · security researcher.
-    I document my findings, build open-source tools,
-    and share writeups.
+    I do offensive security work, develop tools,
+    and document everything worth documenting.
   </p>
   <div class="hero-actions">
     <a href="/writeups/" class="btn btn-primary">⚑ writeups</a>
@@ -121,16 +120,10 @@ title: Home
   </div>
 
   <ul class="post-list">
-    {% assign recent_cheatsheets = site.cheatsheets | sort: 'date' | reverse %}
+    {% assign recent_cheatsheets = site.cheatsheets | sort: 'title' %}
     {% for cheatsheet in recent_cheatsheets limit: 5 %}
     <li class="post-list-item">
-      <span class="post-list-date">{{ cheatsheet.date | date: "%Y-%m-%d" }}</span>
       <a href="{{ cheatsheet.url | relative_url }}" class="post-list-title">{{ cheatsheet.title }}</a>
-      <div class="post-list-tags">
-        {% for tag in cheatsheet.tags limit: 2 %}
-        <span class="tag tag-default">{{ tag }}</span>
-        {% endfor %}
-      </div>
     </li>
     {% endfor %}
   </ul>
